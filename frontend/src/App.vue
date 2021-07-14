@@ -1,15 +1,38 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <img alt="Vue logo" src="./assets/logo.png">
+    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import api from '@/PrevisaoTempo'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data () {
+    return {
+      previsoes: []
+    }
+  },
+  beforeCreate() {
+    console.log("1")
+  },
+  created() {
+    console.log("2")
+  },
+  beforeMount() {
+    console.log("3")
+  },
+  mounted () {
+    console.log("4")
+    this.previsoes = api.getAll()
+  },
+  beforeUnmount() {
+    console.log("5")
+  },
+  unmounted() {
+    console.log("6")
   }
 }
 </script>
